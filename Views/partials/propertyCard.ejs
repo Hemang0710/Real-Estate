@@ -1,0 +1,31 @@
+<!-- views/partials/propertyCard.ejs -->
+<link rel="stylesheet" href="/css/homepage.css" />
+<section>
+    <img src="<%= image %>" alt="img" />
+    <p class="adress_line_1"><%= addressLine1 %></p>
+    <p class="adress_line_2"><%= addressLine2 %></p>
+    <p class="price"><%= price %></p>
+    <div class="hr"></div>
+    <div class="info_container_inSection">
+        <div>
+            <img class="icons" src="/icons/bed.png" alt="" />
+            <p class="house_info_section1">Beds</p>
+            <p class="info_inNumber"><%= beds %></p>
+        </div>
+        <div>
+            <img class="icons" src="/icons/bathtub.png" alt="" />
+            <p class="house_info_section1">Baths</p>
+            <p class="info_inNumber"><%= baths %></p>
+        </div>
+        <div>
+            <img class="icons" src="/icons/next-level.png" alt="" />
+            <p class="house_info_section1">Levels</p>
+            <p class="info_inNumber"><%= levels %></p>
+        </div>
+        <div>
+            <img class="icons" src="/icons/measurement.png" alt="" />
+            <p class="house_info_section1">Sqft</p>
+            <p class="info_inNumber"><%= sqft %></p>
+        </div>
+    </div>
+</section>
