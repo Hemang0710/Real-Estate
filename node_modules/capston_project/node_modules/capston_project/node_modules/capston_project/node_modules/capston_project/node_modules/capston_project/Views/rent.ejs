@@ -16,7 +16,7 @@
   <div class="section_div_sale_in_buy_page">
     <div class="line-1">
       <% rentProperties.forEach(property => { %>
-        <%- include('partials/propertyCard', property) %>
+        <%- include('partials/propertyCard', {property}) %>
       <% }); %>
   </div>
 </div>

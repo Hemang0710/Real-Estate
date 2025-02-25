@@ -89,13 +89,13 @@
   },
   {
     "title": "Buy",
-    "addressLine1": "17081 Perry Street",
-    "addressLine2": "San Francisco, ON, CA",
-    "price": "850,000",
-    "beds": 4,
-    "baths": 2,
-    "levels": 3,
-    "sqft": 1234,
-    "image": "/images/house6_rent_img.jpg"
+    "addressLine1": "108 stevenson road",
+    "addressLine2": "Etoicoke, Toronto",
+    "price": "11000",
+    "beds": "4",
+    "baths": "2",
+    "levels": "3",
+    "sqft": "999",
+    "image": "/images/1740517063058.jpg"
   }
 ]

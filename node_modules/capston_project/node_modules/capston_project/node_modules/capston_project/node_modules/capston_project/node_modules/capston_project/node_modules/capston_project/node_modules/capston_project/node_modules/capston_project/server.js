@@ -15,7 +15,7 @@ app.set("view engine", "ejs");      // Set EJS as the templating engine
 
 // Configure image uploads
 const storage = multer.diskStorage({
-    destination: "public/uploads/",
+    destination: "public/images/",
     filename: (req, file, cb) => {
         cb(null, Date.now() + path.extname(file.originalname));
     }
@@ -39,25 +39,71 @@ app.get("/", (req, res) => {
 });
 
 // Route: Add New Property
+// app.post("/properties", upload.single("image"), (req, res) => {
+//     let properties = getProperties();
+
+//     const newProperty = {
+//         title: req.body.title,
+//         addressLine1: req.body.addressLine1,
+//         addressLine2: req.body.addressLine2,
+//         price: req.body.price,
+//         beds: req.body.beds,
+//         baths: req.body.baths,
+//         levels: req.body.levels,
+//         sqft: req.body.sqft,
+//         image: `/uploads/${req.file.filename}` // Save filename instead of Base64
+//     };
+
+//     properties.push(newProperty);
+//     fs.writeFileSync(filePath, JSON.stringify(properties, null, 2));
+//     // res.redirect("/"); // Reload the page with new property data
+//     res.json({ message: "Property added successfully!", property: newProperty });
+// });
+
+// Route: Show Property Upload Page
+app.get("/properties", (req, res) => {
+    res.render("upload"); // Render upload.ejs
+});
+app.use('/images', express.static(path.join(__dirname, 'public/images')));
+
+// Route: Add New Property
 app.post("/properties", upload.single("image"), (req, res) => {
     let properties = getProperties();
 
     const newProperty = {
         title: req.body.title,
         addressLine1: req.body.addressLine1,
-        addressLine2: req.body.addressLine2,
+        addressLine2: req.body.addressLine2 ,   
         price: req.body.price,
         beds: req.body.beds,
         baths: req.body.baths,
         levels: req.body.levels,
         sqft: req.body.sqft,
-        image: `/uploads/${req.file.filename}` // Save filename instead of Base64
+        image: `/images/${req.file.filename}` // Store image path
     };
 
     properties.push(newProperty);
     fs.writeFileSync(filePath, JSON.stringify(properties, null, 2));
-    res.redirect("/"); // Reload the page with new property data
+
+    res.redirect("/"); // Redirect to homepage after adding property
 });
+
+
+
+// Route: Fetch All Properties as JSON
+app.get("/api/properties", (req, res) => {
+    res.json(getProperties());
+});
+
+
+
+
+
+
+
+
+
+
 
 //  Route: Show All Rent Properties
 app.get("/rent", (req, res) => {
@@ -102,7 +148,6 @@ app.get("/news", (req, res) => {
 app.get("/contact", (req, res) => {
     res.render("contact");
   });
-
   
 
 // Start the server

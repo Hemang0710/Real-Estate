@@ -37,7 +37,7 @@
       <div class="section_div_sale">
         <% if (Array.isArray(buyProperties) && buyProperties.length > 0) { %>
           <% buyProperties.forEach(property => { %>
-            <%- include('partials/propertyCard', property) %>
+            <%- include('partials/propertyCard', {property}) %>
           <% }); %>
         <% } else { %>
           <p>No properties available for sale.</p>
@@ -56,7 +56,7 @@
       <div class="section_div_rent">
         <% if (Array.isArray(rentProperties) && rentProperties.length > 0) { %>
           <% rentProperties.forEach(property => { %>
-            <%- include('partials/propertyCard', property) %>
+            <%- include('partials/propertyCard', {property}) %>
           <% }); %>
         <% } else { %>
           <p>No properties available for rent.</p>
