@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Real-Estate Web Project</title>
+  <link rel="stylesheet" href="/css/homepage.css" />
+  <link rel="shortcut icon" href="/icons/business-outline.svg" type="image/svgs" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet" />
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="/js/autoChangeImage.js"></script>
+</head>
+
+<body>
+  <!-- Include Navigation Partial -->
+  <%- include('partials/nav') %>
+
+  <!-- Include Header Partial -->
+  <%- include('partials/header', { title: 'New Properties' }) %>
+
+  <div class="main_content">
+    <main id="main">
+      <h2 id="question_tag">WHAT ARE YOU LOOKING FOR?</h2>
+
+      <p class="para">
+        "Discover your dream home with our comprehensive real estate services. Whether you're looking to buy, sell, or rent, we offer a personalized approach to match you with the perfect property. From luxurious estates to cozy apartments, our listings cater to every lifestyle and budget. Experience seamless transactions and expert guidance as we help you navigate the exciting world of real estate. Your journey to finding the ideal space begins here."
+      </p>
+
+      <!-- Buy Properties Section -->
+      <h2 class="heading_line1">
+        NEW PROPERTIES
+        <p class="heading_line2">For Sale</p>
+      </h2>
+      <div class="section_div_sale">
+        <% if (Array.isArray(buyProperties) && buyProperties.length > 0) { %>
+          <% buyProperties.forEach(property => { %>
+            <%- include('partials/propertyCard', property) %>
+          <% }); %>
+        <% } else { %>
+          <p>No properties available for sale.</p>
+        <% } %>
+      </div>
+      <div class="viewMoreButton">
+        <a href="/buy"><button>View More</button></a>
+      </div>
+
+      <!-- Rent Properties Section -->
+      <h2 class="heading_line1">
+        NEW PROPERTIES
+        <p class="heading_line2">For Rent</p>
+      </h2>
+
+      <div class="section_div_rent">
+        <% if (Array.isArray(rentProperties) && rentProperties.length > 0) { %>
+          <% rentProperties.forEach(property => { %>
+            <%- include('partials/propertyCard', property) %>
+          <% }); %>
+        <% } else { %>
+          <p>No properties available for rent.</p>
+        <% } %>
+      </div>
+      <div class="viewMoreButton">
+        <a href="/rent"><button>View More</button></a>
+      </div>
+  </div>
+
+      <!-- Include Footer Partial -->
+      <%- include('partials/footer') %>
+
+
+</body>
+</html>
